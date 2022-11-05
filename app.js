@@ -4,6 +4,9 @@ const express = require("express");
 const session = require("express-session");
 const mongodbStore = require("connect-mongodb-session");
 const csrf = require("csurf");
+// Unfortunately this csurf package is no longer maintained.
+// Therefor we need to use an alternative to this package such as csrf-csrf package
+// We can install that by typing npm install csrf-csrf on the terminal
 
 const db = require("./data/database");
 const demoRoutes = require("./routes/demo");
