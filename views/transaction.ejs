@@ -6,6 +6,16 @@
   <main>
     <h1>Send Money</h1>
     <form action="/transaction" method="POST">
+      <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+      <!-- This is how we add the csrfToken to the transaction post request form. -->
+      <!-- Now this form carries the csrfToken along with other post data. -->
+      <!-- So we can use this csrfToken to validate the post request and ignore the  -->
+      <!-- post requests that doesn't contain this token. -->
+      <!-- We need to be extra careful about the spaces we insert inside double quotes of the value attribute -->
+      <!-- as that space will also be a part of the value sent by that input field. -->
+      <!-- _csrf is the name that the csurf package looks for when the form is submitted and -->
+      <!-- it will automatically look for that field. -->
+      <!-- We also need to add this tokens to signup and login pages as they are also can be vulnerable to csrf attacks. -->
       <div class="form-control">
         <label for="recipient">Recipient Email</label>
         <input type="email" id="recipient" name="recipient">
